@@ -1,4 +1,5 @@
 // Ported from https://github.com/raysan5/raylib/blob/master/examples/models/models_first_person_maze.c
+import os
 import irishgreencitrus.raylibv as r
 
 const player_radius = f32(0.1) // Collision radius (player is modelled as a cilinder for collision)
@@ -29,12 +30,15 @@ fn main() {
 	}
 	r.set_camera_mode(camera, C.CAMERA_FIRST_PERSON)
 
-	immap := r.load_image(c'cubicmap.png')
+	path_to_map := os.resource_abs_path('cubicmap.png')
+	path_to_atlas := os.resource_abs_path('cubicmap_atlas.png')
+
+	immap := r.load_image(path_to_map.str)
 	cubicmap := r.load_texture_from_image(immap)
 	mesh := r.gen_mesh_cubicmap(immap, r.Vector3{1.0, 1.0, 1.0})
 	mut model := r.load_model_from_mesh(mesh)
 
-	texture := r.load_texture(c'cubicmap_atlas.png')
+	texture := r.load_texture(path_to_atlas.str)
 	unsafe {
 		model.materials[0].maps[C.MATERIAL_MAP_DIFFUSE].texture = texture
 	}
