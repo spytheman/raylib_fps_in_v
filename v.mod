@@ -3,5 +3,5 @@ Module {
 	description: 'The Raylib First Person Maze example, ported to V, using irishgreencitrus.raylibv'
 	version: '0.0.1'
 	license: 'MIT'
-	dependencies: ['irishgreencitrus.raylibv']
+	dependencies: ['raylib']
 }
